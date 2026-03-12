@@ -1,0 +1,105 @@
+Impiegato amministrativo
+Administrative clerk
+Front office
+Front office assistant
+Back office
+Back office assistant
+Back office commerciale
+Impiegato marketing
+Marketing assistant
+Responsabile marketing
+Marketing manager
+Social media manager
+Venditore after market
+Aftermarket salesperson
+Fleet manager
+Fleet sales specialist
+Consulente noleggio a lungo termine
+Long term rental consultant
+Sales consultant long term rental
+Responsabile vendite aftermarket
+Aftermarket sales manager
+Sales manager aftermarket
+Responsabile vendite ricambi
+Spare parts sales manager
+Parts sales manager
+Responsabile accessori
+Accessories sales manager
+Account manager automotive software
+Automotive software account manager
+Automotive warehouse clerk
+Back office ricambi
+Spare parts back office clerk
+Responsabile di magazzino
+Warehouse manager
+Accettatore
+Service advisor
+Capo officina
+Responsabile service
+Service manager
+Customer advisor
+Customer service specialist
+Business development center
+Venditore
+Salesperson
+Consulente vendita auto nuove
+New car sales consultant
+Consulente vendita auto usate
+Used car sales consultant
+Venditore auto nuove
+New car salesperson
+Venditore auto usate
+Used car salesperson
+Sales executive new cars
+Sales executive used cars
+Venditore showroom
+Showroom sales representative
+Product specialist
+Brand specialist
+Consulente vendita
+Sales consultant
+Meccanico
+Mechanic
+Meccanico senior
+Senior mechanic
+Meccatronico
+Mechatronics technician
+Meccanico diagnostico
+Diagnostic technician
+Meccanico tech
+Automotive technician
+Tecnico diagnostico
+Apprendista meccanico
+Apprentice mechanic
+Gommista
+Tire technician
+Auto gommista
+Tire and auto mechanic
+Preparatore di carrozzeria
+Body shop prep technician
+Carrozziere
+Body repair technician
+Montatore
+Assembler
+Verniciatore
+Painter
+Finitore
+Finisher
+Lucidatore
+Polisher
+Apprendista carrozziere
+Apprentice body repair technician
+Preparatore in pre consegna
+Pre delivery inspection technician
+Ispettore tecnico revisioni auto
+Vehicle inspection technician
+Magazziniere
+Warehouse clerk
+Magazziniere automotive
+Consulente Service
+Consulente del servizio
+Addetto banco ricambi
+Genius
+Tecnico di officina
+Car Detailer
+Venditore brand premium

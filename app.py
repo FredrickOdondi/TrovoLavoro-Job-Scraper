@@ -49,14 +49,22 @@ def start_scraping():
         "started_at": datetime.now().isoformat()
     })
 
+    # Parse specific job titles from textarea
+    # If empty, will use default job_titles.txt file
+    job_titles_input = data.get("specific_job_titles", "")
+    specific_job_titles = None  # Use default file
+    if job_titles_input.strip():  # Only override if user pasted something
+        specific_job_titles = [t.strip() for t in job_titles_input.split('\n') if t.strip()]
+
     # Start scraping in background thread
     thread = threading.Thread(
         target=run_scraper,
         kwargs={
             "search_keywords": data.get("keywords", ""),
-            "max_pages": int(data.get("max_pages", 5)),
-            "max_jobs": int(data.get("max_jobs", 50)),
-            "headless": data.get("headless", True)
+            "max_pages": int(data.get("max_pages", 1000)),
+            "max_jobs": int(data.get("max_jobs", 20000)),
+            "headless": data.get("headless", True),
+            "specific_job_titles": specific_job_titles
         }
     )
     thread.daemon = True
@@ -139,17 +147,40 @@ def run_scraper(**kwargs):
 
                 try:
                     for page in range(1, self.max_pages + 1):
-                        jobs = self.scrape_page(page)
-                        self.scraped_jobs.extend(jobs)
-                        update_state(results=self.scraped_jobs.copy())
+                        try:
+                            # Periodically restart driver every 50 pages to prevent session loss
+                            if page > 1 and page % 50 == 0:
+                                update_state(message=f"Restarting browser for stability...")
+                                try:
+                                    self._restart_driver()
+                                except:
+                                    pass
 
-                        if len(self.scraped_jobs) >= self.max_jobs:
-                            break
+                            jobs = self.scrape_page(page)
+                            self.scraped_jobs.extend(jobs)
+                            update_state(results=self.scraped_jobs.copy())
 
-                        if len(jobs) == 0:
-                            break
+                            if len(self.scraped_jobs) >= self.max_jobs:
+                                break
 
-                        time.sleep(2)
+                            if len(jobs) == 0:
+                                break
+
+                            # Variable delay between pages to avoid throttling
+                            delay = 2 + (page % 3)  # Varies between 2-4 seconds
+                            time.sleep(delay)
+
+                        except Exception as e:
+                            # Try to continue instead of crashing
+                            try:
+                                self._restart_driver()
+                            except:
+                                pass
+                            update_state(
+                                message=f"Error on page {page}: {str(e)}. Retrying..."
+                            )
+                            # Continue to next page
+                            continue
 
                     # Final update
                     update_state(
