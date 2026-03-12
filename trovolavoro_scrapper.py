@@ -336,16 +336,8 @@ class TrovoLavoroScraper:
 
                 # Check specific job titles first (if provided)
                 if self.specific_job_titles:
-                    # Split each title into words and match if ANY word from ANY title appears in the site title
-                    # This makes matching much more flexible
-                    title_words = set()
-                    for specific_title in self.specific_job_titles:
-                        # Split by common delimiters and get words
-                        words = re.findall(r'\b\w+\b', specific_title.lower())
-                        title_words.update(words)
-
-                    # Match if any word from our list appears in the job title (minimum 3 chars to avoid short words)
-                    title_match = any(word in title_lower and len(word) >= 3 for word in title_words)
+                    # Exact match only - job title must be exactly one of the specified titles
+                    title_match = title_lower in self.specific_job_titles
                     if not title_match:
                         # Debug: show what we found vs what we're looking for
                         print(f"      [{idx}] ⏭️  Skipped: '{title}' didn't match any filter")
